@@ -48,7 +48,6 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   --border-focus:#3B82F6;
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;min-height:100vh}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 #particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
 a{color:var(--secondary);text-decoration:none;transition:color .2s}
 a:hover{color:var(--secondary-hover);text-decoration:underline}
@@ -179,7 +178,7 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .candidates-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px}
 .candidate-card{padding:0;overflow:hidden;display:flex;flex-direction:column}
 .candidate-img-wrap{height:200px;background:var(--border);overflow:hidden}
-.candidate-img-wrap img{width:100%;height:100%;object-fit:cover}
+.candidate-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top}
 .candidate-content{padding:32px;flex:1;display:flex;flex-direction:column}
 .candidate-name{font-size:1.5rem;font-weight:800;margin-bottom:8px}
 .candidate-party{margin-bottom:16px}
