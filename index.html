@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZKPVote — Secure E-Voting System</title>
+  <meta name="description" content="A privacy-preserving blockchain-based electronic voting system using Zero-Knowledge Proofs.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <nav id="main-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#/" class="nav-logo" aria-label="ZKPVote Home">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo-text">ZKP<span class="logo-accent">Vote</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links" role="menubar">
+        <li role="none"><a href="#/" role="menuitem" data-page="landing">Home</a></li>
+        <li role="none"><a href="#/vote" role="menuitem" data-page="vote">Vote</a></li>
+        <li role="none"><a href="#/results" role="menuitem" data-page="results">Results</a></li>
+        <li role="none"><a href="#/explorer" role="menuitem" data-page="explorer">Explorer</a></li>
+        <li role="none"><a href="#/zkp" role="menuitem" data-page="zkp">ZKP</a></li>
+        <li role="none"><a href="#/admin" role="menuitem" data-page="admin">Admin</a></li>
+      </ul>
+      <button class="btn btn-sm btn-primary nav-wallet-btn" id="nav-wallet-btn" onclick="handleNavWallet()">
+        <span class="wallet-dot"></span>
+        Connect Wallet
+      </button>
+    </div>
+  </nav>
+
+  <main id="app" role="main"></main>
+
+  <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true"></div>
+
+  <footer id="main-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 12px; color: var(--primary);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            ZKPVote
+          </div>
+          <p class="footer-desc">Secure, verifiable, and privacy-preserving electronic voting infrastructure.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4>Voter Services</h4>
+          <a href="#/">Information</a>
+          <a href="#/vote">Cast Ballot</a>
+          <a href="#/results">Election Results</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Transparency</h4>
+          <a href="#/zkp">ZKP Verification</a>
+          <a href="#/explorer">Public Ledger</a>
+          <a href="#/security">Security Overview</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Administration</h4>
+          <a href="#/security">System Architecture</a>
+          <a href="#/admin">Election Control</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 ZKPVote System Protocol &middot; Blockchain-Based Privacy-Preserving E-Voting Infrastructure</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="pages.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
