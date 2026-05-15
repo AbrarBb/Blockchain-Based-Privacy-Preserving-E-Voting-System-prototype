@@ -26,17 +26,35 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links" role="menubar">
-        <li role="none"><a href="#/" role="menuitem" data-page="landing">Home</a></li>
-        <li role="none"><a href="#/vote" role="menuitem" data-page="vote">Vote</a></li>
-        <li role="none"><a href="#/results" role="menuitem" data-page="results">Results</a></li>
+        <!-- Public Links -->
+        <li role="none" class="nav-item-public"><a href="#/" role="menuitem" data-page="landing">Home</a></li>
+        <li role="none" class="nav-item-public"><a href="#/security" role="menuitem" data-page="security">Security</a></li>
+        
+        <!-- Dashboard Link (Dynamic text based on role) -->
+        <li role="none" class="nav-item-auth hidden"><a href="#/dashboard" role="menuitem" data-page="dashboard" id="nav-dashboard-link">Dashboard</a></li>
+        
+        <!-- Global App Links -->
         <li role="none"><a href="#/explorer" role="menuitem" data-page="explorer">Explorer</a></li>
-        <li role="none"><a href="#/zkp" role="menuitem" data-page="zkp">ZKP</a></li>
-        <li role="none"><a href="#/admin" role="menuitem" data-page="admin">Admin</a></li>
+        
+        <!-- Theme Toggle -->
+        <li role="none">
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </li>
       </ul>
-      <button class="btn btn-sm btn-primary nav-wallet-btn" id="nav-wallet-btn" onclick="handleNavWallet()">
-        <span class="wallet-dot"></span>
-        Connect Wallet
+      <button class="btn btn-sm btn-primary nav-wallet-btn" id="nav-login-btn" onclick="navigate('login')">
+        Sign In
       </button>
+      <div class="nav-user-menu hidden" id="nav-user-menu">
+        <div class="user-avatar" id="nav-user-avatar"></div>
+        <div class="user-details">
+          <div class="user-name" id="nav-user-name">User Name</div>
+          <div class="user-role" id="nav-user-role">Role</div>
+        </div>
+        <button class="btn btn-sm btn-outline" onclick="logout()" style="padding:4px 8px; font-size:0.8rem">Logout</button>
+      </div>
     </div>
   </nav>
 

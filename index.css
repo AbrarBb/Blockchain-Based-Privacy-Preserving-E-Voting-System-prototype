@@ -29,6 +29,24 @@ html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
   --max-w:1200px;
   --nav-h:72px;
 }
+[data-theme="dark"] {
+  --bg:#0B0F19;
+  --bg-surface:#111827;
+  --primary:#3B82F6;
+  --primary-light:rgba(59,130,246,0.2);
+  --primary-hover:#60A5FA;
+  --secondary:#60A5FA;
+  --secondary-hover:#93C5FD;
+  --green:#10B981;
+  --green-bg:rgba(16,185,129,0.2);
+  --red:#EF4444;
+  --red-bg:rgba(239,68,68,0.2);
+  --text:#F9FAFB;
+  --text-muted:#9CA3AF;
+  --text-light:#6B7280;
+  --border:#374151;
+  --border-focus:#3B82F6;
+}
 body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6;font-size:16px;min-height:100vh}
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(37,99,235,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 #particles-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
@@ -67,6 +85,13 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px}
 .nav-toggle span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
 .nav-wallet-btn{margin-left:16px}
+.theme-toggle{background:none;border:none;color:var(--text-muted);cursor:pointer;padding:8px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center}
+.theme-toggle:hover{color:var(--primary);background:var(--bg)}
+.nav-user-menu{display:flex;align-items:center;gap:12px;margin-left:16px;padding-left:16px;border-left:1px solid var(--border)}
+.user-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary-light);color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem}
+.user-details{display:flex;flex-direction:column}
+.user-name{font-size:0.85rem;font-weight:700;color:var(--text)}
+.user-role{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase}
 .wallet-dot{width:8px;height:8px;border-radius:50%;background:var(--border);display:inline-block;margin-right:6px}
 .wallet-dot.connected{background:var(--green)}
 
@@ -119,8 +144,17 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .section-header{text-align:center;margin-bottom:48px}
 .section-header p{max-width:700px;margin:16px auto 0;font-size:1.125rem}
 
+/* ========== DASHBOARD LAYOUT ========== */
+.dashboard-layout{display:flex;min-height:calc(100vh - var(--nav-h));max-width:var(--max-w);margin:0 auto}
+.dashboard-sidebar{width:260px;flex-shrink:0;border-right:1px solid var(--border);padding:32px 24px}
+.dashboard-content{flex:1;padding:32px;min-width:0}
+.sidebar-menu{display:flex;flex-direction:column;gap:8px}
+.sidebar-menu a{padding:12px 16px;border-radius:var(--radius);color:var(--text-muted);font-weight:600;display:flex;align-items:center;gap:12px}
+.sidebar-menu a:hover,.sidebar-menu a.active{background:var(--primary-light);color:var(--primary)}
+@media(max-width:768px){.dashboard-layout{flex-direction:column}.dashboard-sidebar{width:100%;border-right:none;border-bottom:1px solid var(--border);padding:16px}.sidebar-menu{flex-direction:row;overflow-x:auto}.dashboard-content{padding:16px}}
+
 /* ========== HERO ========== */
-.hero{padding:100px 0 80px;text-align:center;background:#fff;border-bottom:1px solid var(--border)}
+.hero{padding:100px 0 80px;text-align:center;background:transparent;border-bottom:1px solid var(--border)}
 .hero-badge{margin-bottom:24px}
 .hero h1{margin-bottom:24px;color:var(--primary)}
 .hero-sub{font-size:1.25rem;max-width:760px;margin:0 auto 40px;line-height:1.7}
@@ -264,7 +298,7 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .confirm-details span{color:var(--text-muted);font-family:var(--font);font-weight:600}
 
 .winner-card{text-align:center;padding:48px;border:2px solid var(--green);background:var(--green-bg);margin-bottom:40px}
-.winner-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 24px;border-radius:99px;background:#fff;color:var(--green);font-weight:700;margin-bottom:24px;font-size:1rem;box-shadow:var(--shadow-sm)}
+.winner-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 24px;border-radius:99px;background:var(--bg-surface);color:var(--green);font-weight:700;margin-bottom:24px;font-size:1rem;box-shadow:var(--shadow-sm)}
 .winner-name{font-size:2.5rem;font-weight:800;margin-bottom:8px;color:var(--text)}
 .winner-votes{color:var(--text-muted);font-size:1.125rem;font-weight:500}
 
