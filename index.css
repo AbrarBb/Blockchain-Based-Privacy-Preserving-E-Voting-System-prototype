@@ -78,7 +78,7 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;font-weight:800;font-size:1.25rem;color:var(--primary)}
 .nav-logo:hover{text-decoration:none;color:var(--primary-hover)}
 .logo-accent{color:var(--secondary)}
-.nav-links{display:flex;list-style:none;gap:8px;margin-left:auto}
+.nav-links{display:flex;align-items:center;list-style:none;gap:8px;margin-left:auto}
 .nav-links a{padding:8px 16px;border-radius:var(--radius-sm);font-size:0.95rem;font-weight:500;color:var(--text-muted);text-decoration:none}
 .nav-links a:hover,.nav-links a.active{color:var(--primary);background:var(--bg)}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px}
