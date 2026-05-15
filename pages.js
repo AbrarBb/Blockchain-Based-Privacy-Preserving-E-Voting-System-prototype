@@ -322,26 +322,125 @@ PAGES.security=function(){
   '</div></div>';
 };
 
-// ===== EXPLORER =====
+// ===== KYC REGISTRATION WIZARD =====
+PAGES.register = function() {
+  return `<div class="page wallet-page" id="kyc-container">
+    <div class="login-portal">
+      <div class="portal-header">
+        <div class="portal-icon">${svgIcon('M10 21h4v-2h-4v2zm2-17a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-1.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z')}</div>
+        <h2>Voter Registration</h2>
+        <p>Complete KYC Identity Verification</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Upload National ID</label>
+        <div style="border:2px dashed var(--border); padding:32px; text-align:center; border-radius:var(--radius); cursor:pointer" onclick="startKYC()">
+          <span style="color:var(--secondary); font-weight:600">Click to Upload Document</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+window.startKYC = function() {
+  const html = `
+    <div class="login-portal text-center">
+      <h2 class="mb-4">Biometric Scan</h2>
+      <p class="mb-4 text-muted">Please look directly into your camera.</p>
+      <div class="scanner-box"></div>
+      <p class="mono text-muted" id="kyc-log">Initializing camera feed...</p>
+    </div>
+  `;
+  document.getElementById('kyc-container').innerHTML = html;
+  
+  setTimeout(() => document.getElementById('kyc-log').innerText = 'Detecting facial geometry...', 1000);
+  setTimeout(() => document.getElementById('kyc-log').innerText = 'Cross-referencing National Database...', 2500);
+  setTimeout(() => {
+    document.getElementById('kyc-container').innerHTML = `
+      <div class="login-portal text-center">
+        <div class="confirm-check" style="width:64px;height:64px;margin-bottom:16px">${svgIcon('M5 13l4 4L19 7')}</div>
+        <h2>Identity Verified</h2>
+        <p class="mb-4">Your cryptographic voting wallet has been provisioned.</p>
+        <button class="btn btn-primary" style="width:100%" onclick="login('u1')">Access Voter Dashboard</button>
+      </div>
+    `;
+  }, 4000);
+};
+
+// ===== EXPLORER (NETWORK DASHBOARD) =====
 PAGES.explorer=function(){
   var txs=[];
-  for(var i=0;i<8;i++){
+  for(var i=0;i<6;i++){
     txs.push({
       hash: '0x'+Array.from({length:40},()=>'0123456789abcdef'[Math.floor(Math.random()*16)]).join(''),
       block: 18443000+Math.floor(Math.random()*1000),
       gas: 304659+Math.floor(Math.random()*200-100),
-      time: Math.floor(Math.random()*60)
+      time: 'Just now'
     });
   }
-  var rows=txs.map(t => card('tx-card',`
+  var rows=txs.map((t, i) => `<div class="tx-card ${i===0?'live-feed-item':''}" style="padding:16px">
     <div><div class="tx-hash">${t.hash.slice(0,24)}...</div><div class="tx-meta">Block #${t.block}</div></div>
-    <div><div class="tx-meta">Gas: ${t.gas.toLocaleString()}</div><div class="tx-meta">${t.time} min ago</div></div>
+    <div><div class="tx-meta">Gas: ${t.gas.toLocaleString()}</div><div class="tx-meta">${t.time}</div></div>
     <div><span class="tx-status verified">Verified ZKP</span></div>
-  `)).join('');
+  </div>`).join('');
   
   return'<div class="page"><div class="container section">'+
-  H('div','section-header',H('span','badge badge-primary','Blockchain Explorer')+H('h2','mt-2','On-Chain Activity')+H('p','','Publicly verifiable view of encrypted vote transactions.'))+
-  H('div','tx-list',rows)+'</div></div>';
+  H('div','section-header',H('span','badge badge-primary','Global Infrastructure')+H('h2','mt-2','Network Health & Explorer')+H('p','','Live monitoring of the distributed ledger infrastructure.'))+
+  H('div', 'stats-grid',
+    H('div', 'stat-box', H('div','val','4,281') + H('div','lbl','Active Nodes')) +
+    H('div', 'stat-box', H('div','val','12 Gwei') + H('div','lbl','Current Gas Fee')) +
+    H('div', 'stat-box', H('div','val','1.2s') + H('div','lbl','Block Time')) +
+    H('div', 'stat-box', H('div','val','0') + H('div','lbl','Mempool TXs'))
+  ) +
+  H('div','grid-2 mb-4',
+    card('', H('h3','mb-4','Global Node Distribution') + '<div class="node-map">' + 
+      Array.from({length:20}).map(()=>'<div class="node-dot" style="top:'+(Math.random()*80)+'%;left:'+(Math.random()*90)+'%;animation-delay:'+(Math.random()*2)+'s"></div>').join('')
+    + '</div>') +
+    card('', H('h3','mb-4', '<span class="live-pulse"></span> Live Cryptographic Proofs') + '<div class="tx-list">' + rows + '</div>')
+  ) +
+  '</div></div>';
+};
+
+// ===== LIVE RESULTS DASHBOARD =====
+PAGES.results=function(){
+  var e = S.elections[0];
+  if(!e) return '<div class="page section text-center">No active elections.</div>';
+  
+  var maxVotes = Math.max(...e.candidates.map(c => c.votes), 1);
+  var totalVotes = e.candidates.reduce((sum, c) => sum + c.votes, 0);
+  
+  var bars = [...e.candidates].sort((a,b)=>b.votes-a.votes).map(c => {
+    var pct = ((c.votes / totalVotes) * 100).toFixed(1);
+    var width = (c.votes / maxVotes) * 100;
+    return `
+      <div class="bar-row mb-4">
+        <div class="bar-label" style="width:180px">
+          <div style="font-weight:700">${c.name}</div>
+          <div style="font-size:0.75rem; color:var(--text-muted)">${c.party}</div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:${width}%; transition:width 1s ease"></div>
+        </div>
+        <div class="bar-pct" style="width:100px; text-align:right">
+          <div style="font-weight:800; font-size:1.1rem">${pct}%</div>
+          <div style="font-size:0.75rem; color:var(--text-muted)">${c.votes.toLocaleString()}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  return '<div class="page"><div class="container section">'+
+    H('div','section-header',
+      H('span','badge badge-green', '<span class="live-pulse"></span> Live Tally') +
+      H('h2','mt-2','Election Night Results') +
+      H('p','','Real-time cryptographic tally of all decrypted votes for the ' + e.title)
+    ) +
+    H('div', 'stats-grid mb-4',
+      H('div', 'stat-box', H('div','val', totalVotes.toLocaleString()) + H('div','lbl','Total Votes Counted')) +
+      H('div', 'stat-box', H('div','val', '99.99%') + H('div','lbl','Cryptographic Integrity')) +
+      H('div', 'stat-box', H('div','val', e.candidates.length) + H('div','lbl','Candidates'))
+    ) +
+    card('', H('h3','mb-4','Candidate Standings') + '<div class="bar-chart">' + bars + '</div>') +
+  '</div></div>';
 };
 
 // ===== SIDEBAR HELPER =====
