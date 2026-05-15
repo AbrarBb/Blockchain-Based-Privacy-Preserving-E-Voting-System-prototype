@@ -303,3 +303,28 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .winner-votes{color:var(--text-muted);font-size:1.125rem;font-weight:500}
 
 .reg-page{max-width:640px;margin:0 auto;padding:60px 24px}
+
+/* ========== REAL-WORLD UI UPGRADES ========== */
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:0.875rem;color:var(--text-muted);margin-bottom:24px}
+.breadcrumb a{color:var(--secondary);font-weight:600}
+.breadcrumb svg{width:16px;height:16px;color:var(--border)}
+
+.receipt-card{border:2px dashed var(--border);background:var(--bg-surface);padding:40px;border-radius:var(--radius-lg);max-width:600px;margin:0 auto;text-align:center;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.receipt-header{margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.receipt-logo{color:var(--primary);margin-bottom:16px;display:flex;justify-content:center}
+.receipt-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;background:var(--bg);padding:24px;border-radius:var(--radius);margin-bottom:32px}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-size:0.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:700}
+.meta-val{font-family:var(--mono);font-size:0.9rem;word-break:break-all;color:var(--text)}
+
+.qr-placeholder{width:160px;height:160px;margin:0 auto 24px;background:var(--bg);border:8px solid #fff;border-radius:var(--radius-sm);background-image:repeating-linear-gradient(45deg, var(--text) 0, var(--text) 5px, transparent 5px, transparent 10px), repeating-linear-gradient(-45deg, var(--text) 0, var(--text) 5px, transparent 5px, transparent 10px);opacity:0.8;box-shadow:var(--shadow-sm)}
+
+.login-portal{max-width:440px;margin:80px auto;background:var(--bg-surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:48px 32px;box-shadow:var(--shadow-lg)}
+.portal-header{text-align:center;margin-bottom:40px}
+.portal-icon{width:64px;height:64px;margin:0 auto 16px;color:var(--primary);background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.form-helper{font-size:0.85rem;color:var(--text-muted);margin-top:8px;text-align:center}
+
+.metric-bar-container{margin-bottom:24px}
+.metric-bar-header{display:flex;justify-content:space-between;margin-bottom:8px;font-size:0.875rem;font-weight:600}
+.metric-bar-track{width:100%;height:8px;background:var(--bg);border-radius:4px;overflow:hidden}
+.metric-bar-fill{height:100%;background:var(--secondary);border-radius:4px}
