@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZKPVote — Secure E-Voting System</title>
-  <meta name="description" content="A privacy-preserving blockchain-based electronic voting system using Zero-Knowledge Proofs.">
+  <meta name="description"
+    content="A privacy-preserving blockchain-based electronic voting system using Zero-Knowledge Proofs.">
   <meta name="theme-color" content="#ffffff">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
   <canvas id="particles-canvas" aria-hidden="true"></canvas>
   <nav id="main-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="#/" class="nav-logo" aria-label="ZKPVote Home">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
         </svg>
         <span class="logo-text">ZKP<span class="logo-accent">Vote</span></span>
       </a>
@@ -28,20 +35,35 @@
       <ul class="nav-links" id="nav-links" role="menubar">
         <!-- Public Links -->
         <li role="none" class="nav-item-public"><a href="#/" role="menuitem" data-page="landing">Home</a></li>
-        <li role="none" class="nav-item-public"><a href="#/security" role="menuitem" data-page="security">Security</a></li>
-        
+        <li role="none" class="nav-item-public"><a href="#/security" role="menuitem" data-page="security">Security</a>
+        </li>
+
         <!-- Dashboard Link (Dynamic text based on role) -->
-        <li role="none" class="nav-item-auth hidden"><a href="#/dashboard" role="menuitem" data-page="dashboard" id="nav-dashboard-link">Dashboard</a></li>
-        
+        <li role="none" class="nav-item-auth hidden"><a href="#/dashboard" role="menuitem" data-page="dashboard"
+            id="nav-dashboard-link">Dashboard</a></li>
+
         <!-- Global App Links -->
-        <li role="none"><a href="#/results" role="menuitem" data-page="results">Results</a></li>
-        <li role="none"><a href="#/explorer" role="menuitem" data-page="explorer">Network</a></li>
-        
+        <li role="none"><a href="#/explorer" role="menuitem" data-page="explorer">Explorer</a></li>
+
         <!-- Theme Toggle -->
         <li role="none">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark/Light Mode">
-            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" style="display:none">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
           </button>
         </li>
       </ul>
@@ -54,12 +76,15 @@
           <div class="user-name" id="nav-user-name">User Name</div>
           <div class="user-role" id="nav-user-role">Role</div>
         </div>
-        <button class="btn btn-sm btn-outline" onclick="logout()" style="padding:4px 8px; font-size:0.8rem">Logout</button>
+        <button class="btn btn-sm btn-outline" onclick="logout()"
+          style="padding:4px 8px; font-size:0.8rem">Logout</button>
       </div>
     </div>
   </nav>
 
   <main id="app" role="main"></main>
+
+
 
   <div class="modal-overlay hidden" id="modal-overlay" role="dialog" aria-modal="true"></div>
 
@@ -67,7 +92,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 12px; color: var(--primary);">
+          <div
+            style="display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 12px; color: var(--primary);">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
             </svg>
@@ -102,4 +128,5 @@
   <script src="pages.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>
