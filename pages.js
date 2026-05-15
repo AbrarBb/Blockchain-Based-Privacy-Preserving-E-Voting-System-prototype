@@ -222,12 +222,12 @@ PAGES.voter_receipt=function(){
 // ===== ELECTION OFFICIAL DASHBOARD =====
 PAGES.official_dashboard=function(){
   var activeElections = S.elections.length;
-  var totalVotes = S.elections.reduce((sum, e) => sum + e.votes.length, 0);
+  var totalVotes = S.elections.reduce((sum, e) => sum + e.candidates.reduce((s,c)=>s+c.votes, 0), 0);
   var registeredVoters = 1450000;
   var turnoutPct = ((totalVotes / registeredVoters) * 100).toFixed(4);
 
   var eCards = S.elections.map(e => {
-    var votes = e.votes.length;
+    var votes = e.candidates.reduce((s,c)=>s+c.votes, 0);
     var pct = e.phase === 'Voting' ? ((votes / registeredVoters)*100).toFixed(2) : 0;
     return card('mb-4', `
       <div class="flex justify-between items-center mb-2">

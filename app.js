@@ -22,9 +22,9 @@ const S = {
       startTime: Date.now() - 86400000, 
       endTime: Date.now() + 86400000,
       candidates: [
-        {id:1,name:'Sarah Mitchell',party:'Progressive Alliance',img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Former public policy director.',votes:4827},
-        {id:2,name:'James Rodriguez',party:'Democratic Union',img:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Civil rights advocate.',votes:3651},
-        {id:3,name:'Amara Osei',party:'Innovation Coalition',img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Technology researcher.',votes:2984}
+        {id:1,name:'Sarah Mitchell',party:'Progressive Alliance',img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Former public policy director.',votes:248271},
+        {id:2,name:'James Rodriguez',party:'Democratic Union',img:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Civil rights advocate.',votes:183651},
+        {id:3,name:'Amara Osei',party:'Innovation Coalition',img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Technology researcher.',votes:112984}
       ],
       votes: [] // array of { nullifier, timestamp }
     },
