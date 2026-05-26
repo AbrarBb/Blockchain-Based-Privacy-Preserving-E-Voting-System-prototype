@@ -5,6 +5,7 @@ const S = {
   page: 'landing',
   theme: localStorage.getItem('theme') || 'light',
   currentUser: null, // null = logged out. Object = logged in.
+  voterHistory: {}, // { [userId]: { [electionId]: { txHash, nullifier, time, block } } }
   
   // Simulated Roles: 'voter', 'official', 'admin', 'auditor'
   users: [
@@ -22,11 +23,11 @@ const S = {
       startTime: Date.now() - 86400000, 
       endTime: Date.now() + 86400000,
       candidates: [
-        {id:1,name:'Sarah Mitchell',party:'Progressive Alliance',img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Former public policy director.',votes:248271},
-        {id:2,name:'James Rodriguez',party:'Democratic Union',img:'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Civil rights advocate.',votes:183651},
-        {id:3,name:'Amara Osei',party:'Innovation Coalition',img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=200&fit=crop&crop=faces&q=80',bio:'Technology researcher.',votes:112984}
+        {id:1,name:'Sarah Mitchell',party:'Progressive Alliance',bio:'Former public policy director with 15 years of experience in governance reform.',votes:248271},
+        {id:2,name:'James Rodriguez',party:'Democratic Union',bio:'Civil rights advocate and constitutional law professor.',votes:183651},
+        {id:3,name:'Amara Osei',party:'Innovation Coalition',bio:'Technology researcher specializing in digital governance.',votes:112984}
       ],
-      votes: [] // array of { nullifier, timestamp }
+      votes: [] // array of { nullifier, timestamp, txHash, voter, block }
     },
     {
       id: 2,
