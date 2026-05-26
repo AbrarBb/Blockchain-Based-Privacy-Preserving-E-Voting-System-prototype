@@ -27,7 +27,12 @@ const S = {
         {id:2,name:'James Rodriguez',party:'Democratic Union',bio:'Civil rights advocate and constitutional law professor.',votes:183651},
         {id:3,name:'Amara Osei',party:'Innovation Coalition',bio:'Technology researcher specializing in digital governance.',votes:112984}
       ],
-      votes: [] // array of { nullifier, timestamp, txHash, voter, block }
+      votes: [
+        { nullifier: '0x9a8f2b7c4d5e6f8a90123456789abcdef0123456789abcdef0123456789abcde', time: Date.now() - 3600000 * 2, txHash: '0x5c7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r', voter: '0x1A2B...3C4D', block: 18443021 },
+        { nullifier: '0x1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g', time: Date.now() - 3600000 * 4, txHash: '0x3a4b5c6d7e8f9a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7s8t9u0v1w2x3y4z', voter: '0x7e8f...9a0b', block: 18443015 },
+        { nullifier: '0x2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6g7h8i9j0k1l2m3n', time: Date.now() - 3600000 * 6, txHash: '0x8f7e6d5c4b3a2a1f0e9d8c7b6a5a4f3e2d1c0b9a8a7f6e5d4c3b2a1f0e9d8c7b', voter: '0xbcde...f012', block: 18443008 },
+        { nullifier: '0x4d3c2b1a0e9f8d7c6b5a4f3e2d1c0b9a8a7f6e5d4c3b2a1f0e9d8c7b6a5a4f3e', time: Date.now() - 3600000 * 8, txHash: '0x1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c7b8a9f0e1d2c3b4a5f6e7d8c9b0a1f2e', voter: '0xdef0...1234', block: 18443002 }
+      ]
     },
     {
       id: 2,

@@ -249,7 +249,14 @@ p{margin-bottom:1em;color:var(--text-muted)}
 .justify-between{justify-content:space-between}
 .justify-center{justify-content:center}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-2 > *{min-width:0}
 @media(max-width:768px){.grid-2{grid-template-columns:1fr}}
+
+/* Sleek Webkit Scrollbars */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-light)}
 
 /* ========== RESPONSIVE ========== */
 @media(max-width:900px){
@@ -465,4 +472,147 @@ p{margin-bottom:1em;color:var(--text-muted)}
   .proof-item{flex-direction:column;gap:6px;text-align:center}
   .proof-label{margin-right:0}
   .tx-found-row{flex-direction:column;gap:4px;text-align:center}
+}
+
+/* ========== ELECTION LIFECYCLE STEPPER ========== */
+.election-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 16px 24px;
+  border-radius: var(--radius);
+}
+.step-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  gap: 6px;
+}
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+.step-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+}
+.step-connector {
+  flex: 1;
+  height: 2px;
+  background: var(--border);
+  margin: 0 12px;
+  position: relative;
+  top: -16px; /* Align with dots middle */
+  z-index: 1;
+}
+
+/* Stepper States */
+.step-node.active .step-dot {
+  border-color: var(--secondary);
+  background: var(--primary-light);
+  color: var(--secondary);
+  box-shadow: 0 0 10px rgba(37,99,235,0.2);
+}
+.step-node.active .step-lbl {
+  color: var(--text);
+}
+.step-node.completed .step-dot {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+.step-node.completed .step-lbl {
+  color: var(--green);
+}
+
+/* ========== MINI CANDIDATE STANDINGS TALLY ========== */
+.candidate-standings-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  padding: 16px;
+  border-radius: var(--radius);
+}
+.mini-candidate-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mini-bar-track {
+  height: 8px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.mini-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+  border-radius: var(--radius-sm);
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========== RED BUTTON & METRIC TRENDS ========== */
+.btn-red {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-red:hover {
+  background: linear-gradient(135deg, #f87171 0%, #b91c1c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+}
+.metric-trend {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--green);
+  margin-top: 2px;
+}
+
+/* ========== AUDITOR VIEWS & CHARTS ========== */
+.activity-chart-container {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.activity-svg text {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.integrity-scanner-active {
+  animation: borderGlow 2s infinite alternate;
+}
+@keyframes borderGlow {
+  0% { border-color: var(--border); box-shadow: none; }
+  100% { border-color: var(--secondary); box-shadow: 0 0 12px rgba(37,99,235,0.15); }
 }
