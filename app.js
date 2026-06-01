@@ -106,13 +106,9 @@
   // AUTH METHODS
   window.login = function (userId) {
     S.currentUser = S.users.find(u => u.id === userId);
-    S.logs.push({ time: Date.now(), user: S.currentUser.wallet, action: 'User Logged In' });
     navigate('dashboard');
   };
   window.logout = function () {
-    if (S.currentUser) {
-      S.logs.push({ time: Date.now(), user: S.currentUser.wallet, action: 'User Logged Out' });
-    }
     S.currentUser = null;
     navigate('landing');
   };
