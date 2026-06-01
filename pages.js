@@ -441,7 +441,7 @@ PAGES.voter_receipt = function () {
     '<h2>Official Ballot Receipt</h2>' +
     '<p>Your vote has been securely recorded on the blockchain.</p>' +
     '</div>' +
-    '<div class="qr-placeholder"></div>' +
+    '<div class="qr-placeholder"><img src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=' + encodeURIComponent(txHash) + '" alt="Transaction QR" style="width:100%; height:100%; display:block; border-radius:2px;" /></div>' +
     '<div class="receipt-meta">' +
     '<div class="meta-item"><span class="meta-label">Election</span><span class="meta-val">' + (e ? e.title : 'Unknown') + '</span></div>' +
     '<div class="meta-item"><span class="meta-label">Timestamp</span><span class="meta-val">' + new Date().toLocaleString() + '</span></div>' +
