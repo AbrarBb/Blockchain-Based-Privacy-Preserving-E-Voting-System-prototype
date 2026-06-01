@@ -441,7 +441,7 @@ PAGES.voter_receipt = function () {
     '<h2>Official Ballot Receipt</h2>' +
     '<p>Your vote has been securely recorded on the blockchain.</p>' +
     '</div>' +
-    '<div class="qr-placeholder"><img src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=' + encodeURIComponent(txHash) + '" alt="Transaction QR" style="width:100%; height:100%; display:block; border-radius:2px;" /></div>' +
+    '<div class="qr-placeholder"><img src="https://api.qrserver.com/v1/create-qr-code/?size=144x144&data=' + encodeURIComponent('https://abrarbb.github.io/Blockchain-Based-Privacy-Preserving-E-Voting-System-prototype/#/explorer?tx=' + txHash) + '" alt="Transaction QR" style="width:100%; height:100%; display:block; border-radius:2px;" /></div>' +
     '<div class="receipt-meta">' +
     '<div class="meta-item"><span class="meta-label">Election</span><span class="meta-val">' + (e ? e.title : 'Unknown') + '</span></div>' +
     '<div class="meta-item"><span class="meta-label">Timestamp</span><span class="meta-val">' + new Date().toLocaleString() + '</span></div>' +
@@ -1119,6 +1119,21 @@ window.searchTransaction = function () {
         <p style="margin:12px 0 0; color:var(--text-muted)">No vote record matching this hash was found on the blockchain. The transaction may be invalid or not yet mined.</p>
       </div>
     `;
+  }
+};
+
+window.PAGES.init_explorer = function () {
+  const hashParts = location.hash.split('?');
+  if (hashParts.length > 1) {
+    const params = new URLSearchParams(hashParts[1]);
+    const tx = params.get('tx');
+    if (tx) {
+      const input = document.getElementById('tx-search-input');
+      if (input) {
+        input.value = tx;
+        searchTransaction();
+      }
+    }
   }
 };
 
