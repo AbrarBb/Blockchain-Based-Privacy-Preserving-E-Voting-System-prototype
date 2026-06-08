@@ -1,7 +1,7 @@
 # Blockchain Based Privacy Preserving E-Voting System
 
 ## Project Overview
-This project is a highly scalable, user interface based prototype for a next generation electoral infrastructure. It leverages simulated blockchain technology, zero knowledge proofs, and smart contracts to demonstrate how modern cryptography can solve critical issues in public elections. 
+This project is a user interface based prototype for a next generation electoral infrastructure. It leverages simulated blockchain technology, zero knowledge proofs, and smart contracts to demonstrate how modern cryptography can solve critical issues in public elections. 
 
 The system guarantees anonymity, transparency, and immutability while providing an intuitive and accessible interface for citizens and election officials.
 
